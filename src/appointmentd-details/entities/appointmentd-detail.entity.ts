@@ -4,14 +4,22 @@ import { Document } from 'mongoose';
 
 @Schema({ timestamps: true })
 export class AppointmentdDetail {
-  @Prop({ required: true })
+  @Prop()
   serialNo: number;
 
   @Prop({required:true})
    date:string;
 
-   @Prop({required:true})
-   bookedSlot:string;
+   @Prop({ required: true, type: {
+    morning: [String],
+    afternoon: [String],
+    evening: [String],
+  } })
+  bookedSlot: {
+    morning: string[];
+    afternoon: string[];
+    evening: string[];
+  };
 
    @Prop({required:true})
    phoneNumber:number;
